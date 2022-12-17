@@ -25,11 +25,9 @@
         <lazy-el-data-load v-else />
       </template>
     </ul>
-    <dev-only>
-      <div v-if="beers?.data?.length" class="text-center mt-4">
-        Loaded: {{ beers?.data?.length }} of {{ beers?.total }} records
-      </div>
-    </dev-only>
+    <div v-if="beers?.data?.length" class="text-center mt-4">
+      Loaded: {{ beers?.data?.length }} of {{ beers?.total }} records
+    </div>
   </div>
 </template>
 
