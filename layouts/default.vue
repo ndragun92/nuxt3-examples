@@ -4,7 +4,10 @@
       class="bg-neutral-800 text-white h-20 flex items-center justify-between px-4"
     >
       <div class="font-bold">
-        <nuxt-link to="/">Nuxt 3 Examples</nuxt-link>
+        <nuxt-link class="block flex items-center gap-2" to="/">
+          <Icon size="20" name="fxemoji:star" />
+          <span>Nuxt 3 Examples</span></nuxt-link
+        >
       </div>
       <ul class="flex items-center gap-4">
         <li>
