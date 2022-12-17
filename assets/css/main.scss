@@ -4,3 +4,15 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Roboto', sans-serif;
 }
+
+html, body, #__nuxt, .page__wrapper {
+  @apply min-h-screen;
+}
+
+.page__wrapper {
+  @apply flex flex-col;
+}
+.page__content {
+  @apply flex-1;
+  @apply flex flex-col;
+}

@@ -24,5 +24,8 @@
     "sass": "^1.56.2",
     "sass-loader": "^13.2.0",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "dependencies": {
+    "v3-infinite-loading": "^1.2.2"
   }
 }
