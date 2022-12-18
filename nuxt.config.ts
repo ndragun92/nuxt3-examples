@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import eslintPlugin from "vite-plugin-eslint";
 export default defineNuxtConfig({
-  ssr: false,
+  // ssr: false,
   nitro: {
     compressPublicAssets: true,
     routeRules: {
@@ -20,5 +20,12 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [eslintPlugin()],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/assets/css/utils/global.scss";`,
+        },
+      },
+    },
   },
 });

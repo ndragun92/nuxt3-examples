@@ -1,6 +1,6 @@
 <template>
   <el-github-example-banner />
-  Pagination Simple in progress..
+  <div class="container__main">Pagination Simple in progress..</div>
 </template>
 
 <script lang="ts">

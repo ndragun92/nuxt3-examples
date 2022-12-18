@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+@import "scrollbars";
+
 body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Roboto', sans-serif;
   @apply bg-neutral-100;
 }
 
-html, body, #__nuxt, .page__wrapper {
+html, body, #__nuxt {
   @apply min-h-screen;
 }
 
-.page__wrapper {
-  @apply flex flex-col;
-}
-.page__content {
-  @apply flex-1;
-  @apply flex flex-row;
+.container__main {
+  @apply p-6 pb-0 pt-8;
 }

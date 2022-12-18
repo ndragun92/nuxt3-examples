@@ -1,0 +1,44 @@
+@mixin container-padding {
+  @apply px-4;
+  @apply sm:px-8;
+  @apply md:px-10;
+  @apply lg:px-12;
+}
+
+@mixin container {
+  @apply w-full mx-auto;
+  @apply sm:max-w-[750px];
+  @apply md:max-w-[970px];
+  @apply lg:max-w-[1170px];
+  @include container-padding;
+}
+
+@mixin container-small {
+  @apply  w-full mx-auto;
+  @apply  sm:max-w-[750px];
+  @include container-padding;
+}
+
+@mixin container-medium {
+  @apply  w-full mx-auto;
+  @apply  sm:max-w-[750px];
+  @apply  md:max-w-[970px];
+  @include container-padding;
+}
+
+@mixin media-md-max {
+  @media only screen and (max-width: 767px) {
+    @content
+  }
+}
+
+@mixin transition {
+  transition: 0.2s linear;
+}
+
+@mixin line-clamp($i) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $i;
+}
