@@ -38,9 +38,9 @@
         </div>
       </div>
     </nav>
-    <div class="wrapper my-10 h-full flex-1 w-full max-w-[1280px] mx-auto">
+    <div class="wrapper mb-10 h-full flex-1 w-full max-w-[1280px] mx-auto">
       <aside
-        class="aside__mobile md:block relative z-10 border-r border-primary-800 border-opacity-50 px-4"
+        class="aside__mobile mt-10 md:block relative z-10 border-r border-primary-800 border-opacity-50 px-4"
         :class="{ 'aside__mobile--open': showMobileMenu }"
       >
         <div
@@ -82,7 +82,7 @@
           </ul>
         </div>
       </aside>
-      <main class="pl-4 md:pr-4 md:pl-0">
+      <main>
         <slot />
       </main>
     </div>
@@ -227,7 +227,7 @@ aside {
   }
 }
 .wrapper {
-  @apply grid gap-10;
-  @apply grid-cols-[300px,minmax(0,1fr)];
+  @apply grid;
+  @apply grid-cols-[minmax(0,1fr)] md:grid-cols-[300px,minmax(0,1fr)];
 }
 </style>

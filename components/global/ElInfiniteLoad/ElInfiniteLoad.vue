@@ -4,7 +4,7 @@
       <template #spinner>
         <div class="w-full flex items-center justify-center py-4">
           <svg
-            class="animate-spin h-8 w-8 text-blue-500"
+            class="animate-spin h-8 w-8 text-emerald-500"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

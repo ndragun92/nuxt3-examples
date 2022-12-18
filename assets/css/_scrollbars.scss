@@ -1,0 +1,31 @@
+:root {
+  --scrollbar-bg-color: theme("colors.primary.800");
+  --scrollbar-handle-color: theme("colors.primary.700");
+  --scrollbar-handle-color-hover: theme("colors.primary.600");
+}
+
+body {
+  // Firefox
+  scrollbar-color: var(--scrollbar-bg-color) var(--scrollbar-handle-color);
+  scrollbar-width: thin;
+  // Width
+  &::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+  &::-webkit-scrollbar:hover {
+    @apply w-2;
+  }
+  // Track
+  &::-webkit-scrollbar-track {
+    @apply bg-[var(--scrollbar-bg-color)];
+  }
+  // Handle
+  &::-webkit-scrollbar-thumb {
+    @apply border border-[var(--scrollbar-bg-color)];
+    @apply bg-[var(--scrollbar-handle-color)];
+  }
+  // Hover
+  &::-webkit-scrollbar-thumb:hover {
+    @apply bg-[var(--scrollbar-handle-color-hover)];
+  }
+}
