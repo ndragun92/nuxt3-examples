@@ -5,7 +5,7 @@
     >
       <div class="font-bold">
         <nuxt-link class="block flex items-center gap-2" to="/">
-          <Icon size="20" name="fxemoji:star" />
+          <Icon size="20" name="vscode-icons:file-type-nuxt" />
           <span>Nuxt 3 Examples</span></nuxt-link
         >
       </div>

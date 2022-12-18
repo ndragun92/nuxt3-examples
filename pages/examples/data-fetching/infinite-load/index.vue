@@ -1,4 +1,5 @@
 <template>
+  <el-github-example-banner />
   <div class="p-10">
     <h1 class="text-2xl font-bold text-center mb-4">Infinite Load Example</h1>
     <div v-if="pending" class="text-center">Loading...</div>
@@ -9,11 +10,13 @@
         class="border border-black border-dotted p-4 flex gap-4 items-center"
       >
         <div class="w-32 h-32 bg-neutral-100 p-2">
-          <img
-            class="block w-full h-full object-contain"
-            :src="beer.image_url"
-            :alt="beer.name"
-          />
+          <client-only>
+            <img
+              class="block w-full h-full object-contain"
+              :src="beer.image_url"
+              :alt="beer.name"
+            />
+          </client-only>
         </div>
         <div class="flex-1">
           <h3 class="font-bold text-lg mb-4" v-text="beer.name" />
