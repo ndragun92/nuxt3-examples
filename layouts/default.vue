@@ -1,7 +1,7 @@
 <template>
   <div class="page__wrapper">
     <nav
-      class="bg-neutral-900 text-white h-20 flex items-center justify-between px-4 border-b border-neutral-700"
+      class="bg-neutral-900 text-white h-20 flex items-center px-4 border-b border-neutral-700"
     >
       <div class="font-bold">
         <nuxt-link class="block flex items-center gap-2" to="/">
@@ -9,13 +9,6 @@
           <span>Nuxt 3 Examples</span></nuxt-link
         >
       </div>
-      <ul class="flex items-center gap-4">
-        <li>
-          <nuxt-link to="/examples/data-fetching/infinite-load">
-            Infinite Load
-          </nuxt-link>
-        </li>
-      </ul>
     </nav>
     <div class="page__content">
       <div class="bg-neutral-800 text-white w-[300px]">
