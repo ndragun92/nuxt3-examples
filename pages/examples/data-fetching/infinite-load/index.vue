@@ -51,9 +51,13 @@ interface BeersDataInterface {
 }
 
 const page = ref(1);
+const cacheEnabled = true; // Enables/Disabled cache
 const cacheLoaded = ref(false);
+
+const route = useRoute();
+// Cache key has to be unique key across all the pages
 const cacheKey = computed(() => {
-  return `infinite-load`;
+  return route.fullPath;
 });
 
 const {
@@ -67,7 +71,7 @@ const {
     data: cachedData,
   } = nuxtApp?.payload?.data[cacheKey.value] || {}; // Checks payload and cached data
   // Validates if cache was loaded and if it exists
-  if (!cacheLoaded.value && cachedPage) {
+  if (cacheEnabled && !cacheLoaded.value && cachedPage) {
     // Load cached data
     cacheLoaded.value = true; // We need to load cached data only once on page load
     page.value = cachedPage; // Gets last fetched page, so we can continue fetch with correct page and just append new data to cached data
