@@ -8,7 +8,7 @@
       >
         <nuxt-link to="/" class="flex items-center">
           <div class="relative">
-            <img class="w-24" src="@/logo.svg" alt="Logo" />
+            <img class="w-24" src="/logo.svg" alt="Logo" />
             <span class="absolute -top-2 -right-4 text-xl text-emerald-500"
               >3</span
             >
