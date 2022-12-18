@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 w-full h-full flex items-center justify-center">
+  <div class="flex-1 w-full h-full flex items-center justify-center p-4">
     <div
       class="max-w-[500px] overflow-hidden bg-black text-primary-100 bg-opacity-10 border border-primary-800 border-opacity-50 text-center rounded-lg"
     >
@@ -21,7 +21,7 @@
         </p>
       </div>
       <div
-        class="flex items-center h-12 bg-black bg-opacity-20 border-t border-primary-800 border-opacity-50"
+        class="flex flex-col md:flex-row items-center h-24 md:h-12 bg-black bg-opacity-20 border-t border-primary-800 border-opacity-50"
       >
         <a
           class="flex items-center justify-center gap-2 h-full flex-1 hover:text-emerald-500"
@@ -30,7 +30,9 @@
           ><Icon class="relative -top-[1px]" size="20" name="mdi:github" />Start
           a New Discussion</a
         >
-        <div class="w-[1px] h-full bg-primary-800 bg-opacity-50" />
+        <div
+          class="w-full h-[1px] md:h-full md:w-[1px] bg-primary-800 bg-opacity-50"
+        />
         <a
           class="flex items-center justify-center gap-2 h-full flex-1 hover:text-emerald-500"
           href="https://github.com/ndragun92/nuxt3-examples"
