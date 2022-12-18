@@ -1,7 +1,7 @@
 <template>
   <div class="flex-1 w-full h-full flex items-center justify-center">
     <div
-      class="px-4 py-8 max-w-[500px] bg-neutral-900 border border-neutral-700 text-white text-center"
+      class="px-4 py-8 max-w-[500px] bg-neutral-900 border border-neutral-700 text-white text-center rounded-lg"
     >
       <h1 class="text-2xl font-bold mb-4">Hello and welcome!</h1>
       <p class="text-neutral-300">
