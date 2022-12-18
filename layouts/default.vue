@@ -15,6 +15,7 @@
         </a>
       </div>
     </nav>
+    <div class="elipsis"></div>
     <div class="page__content">
       <div
         class="bg-neutral-800 text-white w-[300px] border-r border-neutral-700"
