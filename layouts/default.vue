@@ -1,13 +1,18 @@
 <template>
   <div class="page__wrapper">
     <nav
-      class="bg-neutral-900 text-white h-20 flex items-center px-4 border-b border-neutral-700"
+      class="bg-neutral-900 text-white h-20 flex items-center justify-between px-4 border-b border-neutral-700"
     >
       <div class="font-bold">
         <nuxt-link class="block flex items-center gap-2" to="/">
           <Icon size="20" name="vscode-icons:file-type-nuxt" />
           <span>Nuxt 3 Examples</span></nuxt-link
         >
+      </div>
+      <div>
+        <a href="https://github.com/ndragun92/nuxt3-examples" target="_blank">
+          <Icon size="30" name="mdi:github" />
+        </a>
       </div>
     </nav>
     <div class="page__content">
