@@ -3,6 +3,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Roboto', sans-serif;
+  @apply bg-neutral-100;
 }
 
 html, body, #__nuxt, .page__wrapper {

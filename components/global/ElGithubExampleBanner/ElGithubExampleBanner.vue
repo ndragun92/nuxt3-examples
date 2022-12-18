@@ -1,6 +1,6 @@
 <template>
   <a
-    class="w-full h-10 sticky top-0 right-0 left-0 bg-neutral-700 hover:bg-neutral-600 text-white text-center flex items-center justify-center"
+    class="w-full h-10 sticky top-0 right-0 left-0 bg-neutral-900 border-b border-neutral-700 hover:text-green-500 text-white text-center flex items-center justify-center"
     :href="`https://github.com/ndragun92/nuxt3-examples/blob/main${githubPath}`"
     target="_blank"
   >

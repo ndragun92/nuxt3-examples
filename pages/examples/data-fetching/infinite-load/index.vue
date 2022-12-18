@@ -7,7 +7,7 @@
       <li
         v-for="beer in beers?.data"
         :key="beer.id"
-        class="border border-black border-dotted p-4 flex gap-4 items-center"
+        class="border border-black bg-neutral-900 text-white border-dotted p-4 flex gap-4 items-center"
       >
         <div class="w-32 h-32 bg-neutral-100 p-2">
           <client-only>

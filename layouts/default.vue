@@ -11,14 +11,16 @@
       </div>
     </nav>
     <div class="page__content">
-      <div class="bg-neutral-800 text-white w-[300px]">
+      <div
+        class="bg-neutral-800 text-white w-[300px] border-r border-neutral-700"
+      >
         <div
           v-for="(categoryValue, categoryKey) in navigation"
           :key="categoryKey"
           class="cursor-pointer"
         >
           <div
-            class="px-2 py-4 flex items-center gap-2"
+            class="px-2 py-4 flex items-center gap-2 hover:opacity-70"
             @click="onToggleFolder(categoryKey)"
           >
             <div class="w-8 h-8 flex items-center justify-center">
@@ -46,8 +48,13 @@
         <slot />
       </div>
     </div>
-    <footer class="text-center py-2 px-3 bg-neutral-800 text-white text-xs">
-      <a href="https://ndragun92.github.io/portfolio/" target="_blank"
+    <footer
+      class="text-center py-2 px-3 bg-neutral-900 text-white text-xs border-t border-neutral-700"
+    >
+      <a
+        class="hover:text-white"
+        href="https://ndragun92.github.io/portfolio/"
+        target="_blank"
         >ndragun92.github.io/portfolio</a
       >
       &copy; Nemanja Dragun. All Rights Reserve
@@ -122,7 +129,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 a {
   @apply text-neutral-400;
-  &.router-link-active {
+  &.router-link-active,
+  &:hover {
     @apply text-green-500;
   }
 }
