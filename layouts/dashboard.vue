@@ -12,8 +12,7 @@
     </nav>
     <div class="my-10 wrapper h-full flex-1 w-full max-w-[1280px] mx-auto">
       <aside
-        class2="bg-black bg-opacity-5 bg-slate-900 bg-opacity-100 border border-black border-opacity-10 rounded-lg"
-        class="relative z-10 border-r border-primary-800 border-opacity-25"
+        class="relative z-10 border-r border-primary-800 border-opacity-50"
       >
         <div v-for="cat in 3" :key="cat" class="mb-2">
           <div>{{ cat }}. Category</div>
@@ -22,7 +21,7 @@
           </ul>
         </div>
       </aside>
-      <main class="">
+      <main>
         <slot />
       </main>
     </div>
