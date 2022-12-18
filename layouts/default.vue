@@ -1,69 +1,134 @@
 <template>
-  <div class="page__wrapper">
+  <div class="min-h-screen flex flex-col bg-primary-900 text-primary-300">
     <nav
-      class="bg-neutral-900 text-white h-20 flex items-center justify-between px-4 border-b border-neutral-700"
+      class="bg-black bg-opacity-10 border-b border-primary-800 border-opacity-50 px-4"
     >
-      <div class="font-bold">
-        <nuxt-link class="block flex items-center gap-2" to="/">
-          <Icon size="20" name="vscode-icons:file-type-nuxt" />
-          <span>Nuxt 3 Examples</span></nuxt-link
-        >
-      </div>
-      <div>
-        <a href="https://github.com/ndragun92/nuxt3-examples" target="_blank">
-          <Icon size="30" name="mdi:github" />
-        </a>
+      <div
+        class="w-full max-w-[1280px] mx-auto flex items-center justify-between h-20"
+      >
+        <nuxt-link to="/" class="flex items-center">
+          <div class="relative">
+            <img class="w-24" src="@/logo.svg" alt="Logo" />
+            <span class="absolute -top-2 -right-4 text-xl text-emerald-500"
+              >3</span
+            >
+          </div>
+          <sup class="uppercase text-xs ml-6 tracking-wider">Examples</sup>
+        </nuxt-link>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/ndragun92/nuxt3-examples" target="_blank">
+            <Icon size="30" name="mdi:github" />
+          </a>
+          <button
+            class="block md:hidden"
+            type="button"
+            @click="toggleMobileMenu"
+          >
+            <Icon
+              v-show="showMobileMenu"
+              size="30"
+              name="material-symbols:close-rounded"
+            />
+            <Icon
+              v-show="!showMobileMenu"
+              size="30"
+              name="charm:menu-hamburger"
+            />
+          </button>
+        </div>
       </div>
     </nav>
-    <div class="elipsis"></div>
-    <div class="page__content">
-      <div
-        class="bg-neutral-800 text-white w-[300px] border-r border-neutral-700"
+    <div class="wrapper my-10 h-full flex-1 w-full max-w-[1280px] mx-auto">
+      <aside
+        class="aside__mobile md:block relative z-10 border-r border-primary-800 border-opacity-50 px-4"
+        :class="{ 'aside__mobile--open': showMobileMenu }"
       >
         <div
           v-for="(categoryValue, categoryKey) in navigation"
           :key="categoryKey"
-          class="cursor-pointer"
+          class="mb-2"
         >
           <div
-            class="px-2 py-4 flex items-center gap-2 hover:opacity-70"
+            class="flex items-center gap-4 mb-2 cursor-pointer hover:text-emerald-500"
             @click="onToggleFolder(categoryKey)"
           >
-            <div class="w-8 h-8 flex items-center justify-center">
-              <Icon class="w-6 h-6" name="dashicons:category" />
-            </div>
-            <span
-              class="truncate flex-1"
+            <Icon
+              v-show="expandedFolders.data.includes(categoryKey)"
+              class="w-6 h-6"
+              name="material-symbols:folder-open-rounded"
+            />
+            <Icon
+              v-show="!expandedFolders.data.includes(categoryKey)"
+              class="w-6 h-6"
+              name="material-symbols:folder-rounded"
+            />
+            <div
+              class="relative top-[1px] truncate flex-1"
               v-text="formatCategoryName(categoryKey)"
             />
           </div>
-          <ul
-            v-if="expandedFolders.data.includes(categoryKey)"
-            class="pl-12 pr-2 py-2"
-          >
+          <ul v-if="expandedFolders.data.includes(categoryKey)" class="pl-10">
             <li v-for="link in categoryValue" :key="link.path">
-              <nuxt-link class="flex items-baseline gap-2" :to="link.path">
-                <Icon class="text-green-500" name="ic:baseline-minus" />
-                <span v-text="link.meta.title"
+              <nuxt-link
+                class="flex items-baseline gap-1 text-primary-500 hover:text-emerald-500"
+                :to="link.path"
+              >
+                <Icon
+                  class="relative top-[2px] text-emerald-500"
+                  name="ic:baseline-minus" />
+                <span class="flex-1 text-sm" v-text="link.meta.title"
               /></nuxt-link>
             </li>
           </ul>
         </div>
-      </div>
-      <div class="flex-1">
+      </aside>
+      <main class="pl-4 md:pr-4 md:pl-0">
         <slot />
-      </div>
+      </main>
     </div>
     <footer
-      class="text-center py-2 px-3 bg-neutral-900 text-white text-xs border-t border-neutral-700"
+      class="text-center py-2 px-4 bg-black bg-opacity-10 border-t border-primary-800 border-opacity-50 text-xs flex flex-col md:flex-row items-center justify-between gap-2"
     >
       <a
-        class="hover:text-white"
-        href="https://ndragun92.github.io/portfolio/"
+        href="https://github.com/ndragun92/nuxt3-examples"
         target="_blank"
-        >ndragun92.github.io/portfolio</a
+        class="flex items-center gap-2"
       >
-      &copy; Nemanja Dragun. All Rights Reserve
+        <Icon class="animate-bounce" size="16" name="twemoji:star" />
+        <div
+          class="relative top-[1px] text-white"
+          v-text="data?.stargazers_count"
+        />
+      </a>
+      <div>
+        <a
+          class="text-emerald-500 hover:text-white"
+          href="https://ndragun92.github.io/portfolio/"
+          target="_blank"
+          >ndragun92.github.io/portfolio</a
+        >
+        <span> &copy; {{ year }} All Rights Reserved</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div>Made with</div>
+        <div class="relative">
+          <Icon
+            class="animate-ping absolute top-1 left-0"
+            name="twemoji:red-heart"
+          />
+          <Icon name="twemoji:red-heart" />
+        </div>
+        <div>
+          by
+          <a
+            class="text-bold text-white hover:underline"
+            href="https://www.linkedin.com/in/nemanja-dragun/"
+            target="_blank"
+            >Nemanja Dragun</a
+          >
+          in Bielefeld
+        </div>
+      </div>
     </footer>
   </div>
 </template>
@@ -75,6 +140,16 @@ export default {
 </script>
 
 <script lang="ts" setup>
+const { toggleValue: showMobileMenu, toggle: toggleMobileMenu } = useHelpers();
+
+const { data } = useLazyAsyncData<{ stargazers_count: number }>(() =>
+  $fetch("https://api.github.com/repos/ndragun92/nuxt3-examples")
+);
+
+const year = computed(() => {
+  return useDateFormat(useNow(), "YYYY").value;
+});
+
 const router = useRouter();
 
 const navigation = computed(() => {
@@ -133,11 +208,26 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-a {
-  @apply text-neutral-400;
-  &.router-link-active,
-  &:hover {
-    @apply text-green-500;
+aside {
+  a {
+    &.router-link-active,
+    &:hover {
+      @apply text-emerald-500;
+    }
   }
+}
+.aside__mobile {
+  @include media-md-max {
+    @apply fixed top-[calc(5rem+1px)] left-0 bottom-0 w-[300px] z-50 bg-primary-900 overflow-y-auto overflow-x-hidden p-4;
+    @apply -translate-x-full;
+    @include transition;
+    &--open {
+      @apply translate-x-0;
+    }
+  }
+}
+.wrapper {
+  @apply grid gap-10;
+  @apply grid-cols-[300px,minmax(0,1fr)];
 }
 </style>
