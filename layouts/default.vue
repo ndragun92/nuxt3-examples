@@ -16,10 +16,15 @@
           <sup class="uppercase text-xs ml-6 tracking-wider">Examples</sup>
         </nuxt-link>
         <div class="flex items-center gap-4">
-          <a href="https://github.com/ndragun92/nuxt3-examples" target="_blank">
+          <a
+            aria-label="Github Repository"
+            href="https://github.com/ndragun92/nuxt3-examples"
+            target="_blank"
+          >
             <Icon size="30" name="mdi:github" />
           </a>
           <button
+            aria-label="Mobile Menu"
             class="block md:hidden"
             type="button"
             @click="toggleMobileMenu"
