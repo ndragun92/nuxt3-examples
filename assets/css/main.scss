@@ -14,5 +14,5 @@ html, body, #__nuxt, .page__wrapper {
 }
 .page__content {
   @apply flex-1;
-  @apply flex flex-col;
+  @apply flex flex-row;
 }

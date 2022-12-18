@@ -43,6 +43,10 @@ export default {
 <script lang="ts" setup>
 import { promiseTimeout } from "@vueuse/core";
 
+definePageMeta({
+  title: "Infinite Load",
+});
+
 interface BeersDataInterface {
   page?: number; // For internal caching
   total: number;
