@@ -17,11 +17,20 @@
         </nuxt-link>
         <div class="flex items-center gap-4">
           <a
+            class="hover:text-emerald-500"
             aria-label="Github Repository"
             href="https://github.com/ndragun92/nuxt3-examples"
             target="_blank"
           >
             <Icon size="30" name="mdi:github" />
+          </a>
+          <a
+            class="hover:text-blue-500"
+            aria-label="Discord Channel"
+            href="https://discord.gg/cfYJbewNcz"
+            target="_blank"
+          >
+            <Icon size="30" name="ic:baseline-discord" />
           </a>
           <button
             aria-label="Mobile Menu"

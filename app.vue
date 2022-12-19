@@ -40,6 +40,6 @@
       </Head>
     </Html>
     <NuxtPage />
-    <el-loading-intro />
+    <!--    <el-loading-intro />-->
   </NuxtLayout>
 </template>
