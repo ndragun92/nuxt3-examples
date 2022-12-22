@@ -48,6 +48,10 @@ export default {
 <script lang="ts" setup>
 import { promiseTimeout } from "@vueuse/core";
 
+const ElInfiniteLoad = defineAsyncComponent(
+  () => import("~/components/elements/ElInfiniteLoad/ElInfiniteLoad.vue")
+);
+
 definePageMeta({
   title: "Infinite Load",
 });
