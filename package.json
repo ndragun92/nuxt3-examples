@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^0.1.6",
+    "lodash-es": "^4.17.21",
     "v3-infinite-loading": "^1.2.2"
   }
 }
