@@ -31,7 +31,7 @@
     </ul>
     <div class="mt-4">
       <el-pagination
-        v-if="returnData?.length"
+        v-if="beers?.total"
         v-model.number="page"
         :query="true"
         :total="getTotalPages(beers?.total, limit)"

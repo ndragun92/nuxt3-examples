@@ -1,97 +1,106 @@
 <template>
-  <ul
-    v-if="total > 1"
-    class="el__pagination"
-    :class="[`el__pagination--${props?.type || 'default'}`]"
-  >
-    <li v-if="page > 1" class="el__pagination_item el__pagination_item--first">
-      <button type="button" aria-label="Move to first page" @click="page = 1">
-        <Icon name="material-symbols:first-page" />
-      </button>
-    </li>
-    <li
-      v-if="page - 1 > 1"
-      class="el__pagination_item el__pagination_item--backward"
-    >
-      <button
-        type="button"
-        aria-label="Move to previous page"
-        @click="page = page - 1"
+  <div class="flex justify-between items-center gap-4">
+    <ul>
+      <li
+        v-if="!hideSearch && page <= total"
+        class="el__pagination_item el__pagination_item--search"
       >
-        <Icon name="grommet-icons:form-previous" />
-      </button>
-    </li>
-    <template
-      v-for="prevPage in arrayCreate(prevShowCount).reverse()"
-      :key="`prevPage--${prevPage._id}}`"
+        <label for="goToPage">Search for page...</label>
+        <input
+          id="goToPage"
+          v-model="inputPage"
+          aria-label="Search for page..."
+          type="text"
+          placeholder="..."
+        />
+      </li>
+    </ul>
+    <ul
+      v-if="total > 1"
+      class="el__pagination"
+      :class="[`el__pagination--${props?.type || 'default'}`]"
     >
       <li
-        v-if="page - prevPage._id > 0"
-        class="el__pagination_item el__pagination_item--prev"
+        v-if="page > 1"
+        class="el__pagination_item el__pagination_item--first"
+      >
+        <button type="button" aria-label="Move to first page" @click="page = 1">
+          <Icon name="material-symbols:first-page" />
+        </button>
+      </li>
+      <li
+        v-if="page - 1 > 1"
+        class="el__pagination_item el__pagination_item--backward"
       >
         <button
           type="button"
-          :aria-label="`Move to page ${page - prevPage._id}`"
-          @click="page = page - prevPage._id"
-          v-text="page - prevPage._id"
-        />
+          aria-label="Move to previous page"
+          @click="page = page - 1"
+        >
+          <Icon name="grommet-icons:form-previous" />
+        </button>
       </li>
-    </template>
-    <li class="el__pagination_item el__pagination_item--current">
-      <button type="button" v-text="page" />
-    </li>
-    <li
-      v-if="!hideSearch && page + nextShowCount < total"
-      class="el__pagination_item el__pagination_item--search"
-    >
-      <input
-        v-model="inputPage"
-        aria-label="Search for page..."
-        type="text"
-        placeholder="..."
-      />
-    </li>
-    <template
-      v-for="nextPage in arrayCreate(nextShowCount)"
-      :key="`nextPage--${nextPage._id}}`"
-    >
+      <template
+        v-for="prevPage in arrayCreate(prevShowCount).reverse()"
+        :key="`prevPage--${prevPage._id}}`"
+      >
+        <li
+          v-if="page - prevPage._id > 0"
+          class="el__pagination_item el__pagination_item--prev"
+        >
+          <button
+            type="button"
+            :aria-label="`Move to page ${page - prevPage._id}`"
+            @click="page = page - prevPage._id"
+            v-text="page - prevPage._id"
+          />
+        </li>
+      </template>
+      <li class="el__pagination_item el__pagination_item--current">
+        <button type="button" v-text="page" />
+      </li>
+      <template
+        v-for="nextPage in arrayCreate(nextShowCount)"
+        :key="`nextPage--${nextPage._id}}`"
+      >
+        <li
+          v-if="page + nextPage._id <= total"
+          class="el__pagination_item el__pagination_item--next"
+        >
+          <button
+            type="button"
+            :aria-label="`Move to page ${page + nextPage._id}`"
+            @click="page = page + nextPage._id"
+            v-text="page + nextPage._id"
+          />
+        </li>
+      </template>
       <li
-        v-if="page + nextPage._id <= total"
-        class="el__pagination_item el__pagination_item--next"
+        v-if="page + 1 < total"
+        class="el__pagination_item el__pagination_item--forward"
       >
         <button
           type="button"
-          :aria-label="`Move to page ${page + nextPage._id}`"
-          @click="page = page + nextPage._id"
-          v-text="page + nextPage._id"
-        />
+          aria-label="Move to next page"
+          @click="page = page + 1"
+        >
+          <Icon name="grommet-icons:form-next" />
+        </button>
       </li>
-    </template>
-    <li
-      v-if="page + 1 < total"
-      class="el__pagination_item el__pagination_item--forward"
-    >
-      <button
-        type="button"
-        aria-label="Move to next page"
-        @click="page = page + 1"
+      <li
+        v-if="page < total"
+        class="el__pagination_item el__pagination_item--last"
       >
-        <Icon name="grommet-icons:form-next" />
-      </button>
-    </li>
-    <li
-      v-if="page < total"
-      class="el__pagination_item el__pagination_item--last"
-    >
-      <button
-        type="button"
-        aria-label="Move to last page"
-        @click="page = total"
-      >
-        <Icon name="material-symbols:last-page" />
-      </button>
-    </li>
-  </ul>
+        <button
+          type="button"
+          aria-label="Move to last page"
+          @click="page = total"
+        >
+          <Icon name="material-symbols:last-page" />
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -243,8 +252,12 @@ if (props?.query) {
       @apply bg-blue-500 text-white;
     }
     &--search {
+      @apply w-auto bg-primary-800 overflow-hidden rounded-sm;
+      label {
+        @apply block whitespace-nowrap px-4 text-primary-200 text-xs;
+      }
       input {
-        @apply bg-primary-800 w-full h-full focus:outline-none text-center;
+        @apply border-l border-primary-900 bg-primary-800 text-white w-10 h-full focus:outline-none text-center;
       }
     }
   }
