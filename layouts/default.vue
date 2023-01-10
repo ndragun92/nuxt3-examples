@@ -195,6 +195,8 @@ const formatCategoryName = (category: string) => {
   switch (category) {
     case "data-fetching":
       return "Data Fetching";
+    case "data-table":
+      return "Data Tables";
     case "pagination":
       return "Pagination";
     default:
