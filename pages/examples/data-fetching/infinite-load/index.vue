@@ -110,8 +110,8 @@ const {
 
   let data: any[] = response.data;
   // Check if page is greater than 1, if it is then just append new data on current
-  if (beers.value?.page && beers.value.page > 1) {
-    data = [...beers.value.data, ...response.data];
+  if (beers.value?.data && page.value > 1) {
+    data = [...beers.value.data, ...data];
   }
 
   return {
