@@ -197,6 +197,8 @@ const formatCategoryName = (category: string) => {
       return "Data Fetching";
     case "data-table":
       return "Data Tables";
+    case "nuxt-content":
+      return "Nuxt Content";
     case "pagination":
       return "Pagination";
     case "scroll-to":
