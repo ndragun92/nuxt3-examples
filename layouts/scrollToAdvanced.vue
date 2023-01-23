@@ -57,43 +57,53 @@
         class="aside__mobile mt-10 md:block relative z-10 border-r border-primary-800 border-opacity-50 px-4"
         :class="{ 'aside__mobile--open': showMobileMenu }"
       >
-        <div
-          v-for="(categoryValue, categoryKey) in navigation"
-          :key="categoryKey"
-          class="mb-2"
-        >
+        <div class="mb-2">
           <div
             class="flex items-center gap-4 mb-2 cursor-pointer hover:text-emerald-500"
-            @click="onToggleFolder(categoryKey)"
           >
-            <Icon
-              v-show="expandedFolders.data.includes(categoryKey)"
-              class="w-6 h-6"
-              name="material-symbols:folder-open-rounded"
-            />
-            <Icon
-              v-show="!expandedFolders.data.includes(categoryKey)"
-              class="w-6 h-6"
-              name="material-symbols:folder-rounded"
-            />
-            <div
-              class="relative top-[1px] truncate flex-1"
-              v-text="formatCategoryName(categoryKey)"
-            />
+            <nuxt-link to="/mock/scroll-to/page-1#section1">
+              <div
+                class="relative top-[1px] truncate flex-1"
+                v-text="'Page 1 (Smooth) - Section 1'"
+              />
+            </nuxt-link>
           </div>
-          <ul v-if="expandedFolders.data.includes(categoryKey)" class="pl-10">
-            <li v-for="link in categoryValue" :key="link.path">
-              <nuxt-link
-                class="flex items-baseline gap-1 text-primary-500 hover:text-emerald-500"
-                :to="link.path"
-              >
-                <Icon
-                  class="relative top-[2px] text-emerald-500"
-                  name="ic:baseline-minus" />
-                <span class="flex-1 text-sm" v-text="link.meta.title"
-              /></nuxt-link>
-            </li>
-          </ul>
+        </div>
+        <div class="mb-2">
+          <div
+            class="flex items-center gap-4 mb-2 cursor-pointer hover:text-emerald-500"
+          >
+            <nuxt-link to="/mock/scroll-to/page-1#section2">
+              <div
+                class="relative top-[1px] truncate flex-1"
+                v-text="'Page 1 (Smooth) - Section 2'"
+              />
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div
+            class="flex items-center gap-4 mb-2 cursor-pointer hover:text-emerald-500"
+          >
+            <nuxt-link to="/mock/scroll-to/page-2#section1">
+              <div
+                class="relative top-[1px] truncate flex-1"
+                v-text="'Page 2 - Section 1'"
+              />
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div
+            class="flex items-center gap-4 mb-2 cursor-pointer hover:text-emerald-500"
+          >
+            <nuxt-link to="/mock/scroll-to/page-2#section2">
+              <div
+                class="relative top-[1px] truncate flex-1"
+                v-text="'Page 2 - Section 2'"
+              />
+            </nuxt-link>
+          </div>
         </div>
       </aside>
       <main>
@@ -149,7 +159,7 @@
 
 <script lang="ts">
 export default {
-  name: "LayoutDefault",
+  name: "LayoutScrollTo",
 };
 </script>
 
@@ -162,66 +172,6 @@ const { data } = useLazyAsyncData<{ stargazers_count: number }>(() =>
 
 const year = computed(() => {
   return useDateFormat(useNow(), "YYYY").value;
-});
-
-const router = useRouter();
-
-const navigation = computed(() => {
-  const routes = router.getRoutes();
-  const formatRoutes = routes
-    .filter((route) => route.path.startsWith("/examples/"))
-    .map((obj) => {
-      return {
-        path: obj.path,
-        name: obj.name,
-        meta: obj.meta,
-      };
-    });
-  const buildNavigation = {};
-  formatRoutes.forEach((route) => {
-    const splitRoute = route.path.replace("/examples/", "").split("/");
-    const category = splitRoute[0];
-    if (!buildNavigation[category]) {
-      buildNavigation[category] = [];
-    }
-    buildNavigation[category].push({
-      ...route,
-    });
-  });
-  return buildNavigation;
-});
-
-const formatCategoryName = (category: string) => {
-  switch (category) {
-    case "data-fetching":
-      return "Data Fetching";
-    case "data-table":
-      return "Data Tables";
-    case "pagination":
-      return "Pagination";
-    case "scroll-to":
-      return "Scroll To";
-    default:
-      return category;
-  }
-};
-
-const expandedFolders = reactive<{ data: string[] }>({ data: [] });
-
-const onToggleFolder = (category: string) => {
-  if (!expandedFolders.data.includes(category)) {
-    expandedFolders.data.push(category);
-  } else {
-    expandedFolders.data = expandedFolders.data.filter(
-      (folder) => folder !== category
-    );
-  }
-};
-
-onMounted(() => {
-  const firstCategory = Object.keys(navigation.value)[0];
-  // Expand first category by default
-  expandedFolders.data.push(firstCategory);
 });
 </script>
 
