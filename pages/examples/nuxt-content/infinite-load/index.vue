@@ -4,7 +4,6 @@
     <h1 class="text-2xl font-bold mb-4 text-center md:text-left">
       Nuxt Content - Infinite Load Example
     </h1>
-    <div v-if="pending" class="text-center">Loading...</div>
     <ul v-if="posts?.data?.length" class="grid grid-cols-3 gap-4">
       <li
         v-for="post in posts?.data"
