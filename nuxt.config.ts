@@ -17,6 +17,8 @@ export default defineNuxtConfig({
     "nuxt-icon",
     // https://vueuse.org/guide/index.html#nuxt
     "@vueuse/nuxt",
+    // https://content.nuxtjs.org/get-started
+    "@nuxt/content",
   ],
   vite: {
     plugins: [eslintPlugin()],
