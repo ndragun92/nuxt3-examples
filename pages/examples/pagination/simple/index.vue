@@ -1,43 +1,45 @@
 <template>
-  <el-github-example-banner />
-  <div class="container__main">
-    <h1 class="text-2xl font-bold mb-4 text-center md:text-left">
-      Pagination Example
-    </h1>
-    <div v-if="pending" class="text-center">Loading...</div>
-    <ul class="flex flex-col gap-4 max-h-full overflow-auto">
-      <li
-        v-for="beer in returnData"
-        :key="beer.id"
-        class="border border-primary-800 border-opacity-50 bg-black bg-opacity-20 p-4 text-center md:text-left flex flex-col md:flex-row gap-4 items-center"
-      >
-        <div class="w-32 h-32 bg-primary-900 p-2">
-          <client-only>
-            <img
-              class="block w-full h-full object-contain"
-              :src="beer.image_url"
-              :alt="beer.name"
+  <div>
+    <el-github-example-banner />
+    <div class="container__main">
+      <h1 class="text-2xl font-bold mb-4 text-center md:text-left">
+        Pagination Example
+      </h1>
+      <div v-if="pending" class="text-center">Loading...</div>
+      <ul class="flex flex-col gap-4 max-h-full overflow-auto">
+        <li
+          v-for="beer in returnData"
+          :key="beer.id"
+          class="border border-primary-800 border-opacity-50 bg-black bg-opacity-20 p-4 text-center md:text-left flex flex-col md:flex-row gap-4 items-center"
+        >
+          <div class="w-32 h-32 bg-primary-900 p-2">
+            <client-only>
+              <img
+                class="block w-full h-full object-contain"
+                :src="beer.image_url"
+                :alt="beer.name"
+              />
+            </client-only>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-bold text-lg mb-4 text-primary-100"
+              v-text="beer.name"
             />
-          </client-only>
-        </div>
-        <div class="flex-1">
-          <h3
-            class="font-bold text-lg mb-4 text-primary-100"
-            v-text="beer.name"
-          />
-          <p v-text="beer.description" />
-        </div>
-      </li>
-    </ul>
-    <div class="mt-4">
-      <el-pagination
-        v-if="beers?.total"
-        v-model.number="page"
-        :query="true"
-        :total="getTotalPages(beers?.total, limit)"
-        :prev-show-count="3"
-        :next-show-count="3"
-      />
+            <p v-text="beer.description" />
+          </div>
+        </li>
+      </ul>
+      <div class="mt-4">
+        <el-pagination
+          v-if="beers?.total"
+          v-model.number="page"
+          :query="true"
+          :total="getTotalPages(beers?.total, limit)"
+          :prev-show-count="3"
+          :next-show-count="3"
+        />
+      </div>
     </div>
   </div>
 </template>
